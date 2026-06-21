@@ -7,12 +7,14 @@ function fish_right_prompt -d "Write out the right prompt"
 		set_color normal
 	end
 
+	set line (whoami) '@' (hostname| cut -d . -f 1) ':' (prompt_pwd)
+
 	# tmux, screen title
 	switch $TERM;
 	case xterm'*' vte'*';
-	printf '\033]0;['(prompt_pwd)']\007';
+	printf "\033]0;[$line]\007";
 	case screen'*';
-	printf '\033k['(prompt_pwd)']\033\\';
+	printf "\033k[$line]\033\\";
 	end
 
 	echo -ns (date "+%D")" - "(date "+%l:%M %p")
