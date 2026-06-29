@@ -22,5 +22,5 @@ function fish_right_prompt -d "Write out the right prompt"
 
     end
 
-    echo -ns (date "+%D")" - "(date "+%l:%M %p")
+    echo -ns (date "+%d-%m-%4Y")" - "(date "+%T")
 end
