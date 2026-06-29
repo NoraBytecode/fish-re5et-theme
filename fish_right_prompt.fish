@@ -14,13 +14,13 @@ function fish_right_prompt -d "Write out the right prompt"
 
         case xterm'*' vte'*'
 
-            printf "\033]0;[$line]\007"
+            printf "\033]0;$line\007"
 
         case screen'*'
 
-            printf "\033k[$line]\033\\"
+            printf "\033k$line\033\\"
 
     end
 
-    echo -ns (date "+%d-%m-%4Y")" - "(date "+%T")
+    echo -n (date "+%a %d.%m.%4Y %T")
 end
