@@ -7,7 +7,10 @@ function fish_right_prompt -d "Write out the right prompt"
         set_color normal
     end
 
-    set line "$(whoami)@$(hostname| cut -d . -f 1):$(prompt_pwd)"
+    set -l realhome ~
+    set directory (echo $PWD | sed -e "s|^$realhome|~|")
+
+    set line "$(whoami)@$(hostname| cut -d . -f 1):$directory"
 
     # tmux, screen title
     switch $TERM
